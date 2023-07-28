@@ -1,0 +1,91 @@
+<div class="main-text">
+  <h4>Convert machine-excel format to erp-excel format</h4>
+</div>
+<div class="radiobutton">
+  <label style="font-size: 20px; margin-right: 10px; margin-bottom: 3px; color: black;">
+    Select City:
+  </label>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label" for="ahmedabad">Ahmedabad</label>
+    <input class="form-check-input" type="radio" id="ahmedabad" name="frequency" [(ngModel)]="selectedFrequency_city"
+      [value]="'Ahmedabad'">
+  </div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label" for="junagadh">Junagadh</label>
+    <input class="form-check-input" type="radio" id="junagadh" name="frequency" [(ngModel)]="selectedFrequency_city"
+      [value]="'Junagadh'">
+  </div>
+</div>
+
+<hr>
+
+<!-- Time Excel of machine start -->
+<div class="row">
+  <div class="col-md-12" *ngIf="selectedFrequency_city === 'Ahmedabad'">
+    <div class="radiobuttons-adi">
+      <label style="font-size: 18px; margin-right: 10px; color: black;">
+        Data Format:
+      </label>
+      <div class="form-check form-check-inline-adi">
+        <label class="form-check-label-adi" for="daily">Daily</label>
+        <input class="form-check-input-adi" type="radio" id="daily" name="frequency" [(ngModel)]="selectedFrequency"
+          [value]="'Daily'">
+      </div>
+      <div class="form-check form-check-inline-adi">
+        <label class="form-check-label-adi" for="monthly">Monthly</label>
+        <input class="form-check-input-adi" type="radio" id="monthly" name="frequency" [(ngModel)]="selectedFrequency"
+          [value]="'Monthly'">
+      </div>
+    </div>
+    <label *ngIf="selectedFrequency === 'Daily'"><strong>Upload {{dailyData}} {{cityNameAdi}} time machine excel
+        file</strong></label>
+    <label *ngIf="selectedFrequency === 'Monthly'"><strong>Upload {{monthlyData}} {{cityNameAdi}} time machine excel
+        file</strong></label>
+    <label *ngIf="selectedFrequency === 'Daily' || selectedFrequency === 'Monthly'">
+      <input type="file" #fileInput (change)="onFileSelected(fileInput)">
+    </label>
+    <button *ngIf="selectedFrequency === 'Monthly'" class="btn btn-primary buttons"
+      (click)="uploadFileAdiMonthly()">Upload</button>
+    <button *ngIf="selectedFrequency === 'Daily'" class="btn btn-primary buttons"
+      (click)="uploadFileAdiDaily()">Upload</button>
+    <button class="btn btn-success buttons" *ngIf="showDownloadButton" (click)="downloadFile()">Download</button>
+  </div>
+  <div>
+    <hr *ngIf="selectedFrequency_city === 'Ahmedabad'">
+  </div>
+
+  <div class="col-md-12" *ngIf="selectedFrequency_city === 'Junagadh'">
+    <div class="radiobuttons-adi">
+      <label style="font-size: 18px; margin-right: 10px; color: black;">
+        Data Format:
+      </label>
+      <div class="form-check form-check-inline-adi">
+        <label class="form-check-label-adi" for="daily">Daily</label>
+        <input class="form-check-input-adi" type="radio" id="daily" name="frequency" [(ngModel)]="selectedFrequency"
+          [value]="'Daily'">
+      </div>
+      <div class="form-check form-check-inline-adi">
+        <label class="form-check-label-adi" for="monthly">Monthly</label>
+        <input class="form-check-input-adi" type="radio" id="monthly" name="frequency" [(ngModel)]="selectedFrequency"
+          [value]="'Monthly'">
+      </div>
+    </div>
+    <label *ngIf="selectedFrequency === 'Daily'"><strong>Upload {{dailyData}} {{cityNameJnd}} time machine excel
+        file</strong></label>
+    <label *ngIf="selectedFrequency === 'Monthly'"><strong>Upload {{monthlyData}} {{cityNameJnd}} time machine excel
+        file</strong></label>
+    <label *ngIf="selectedFrequency === 'Daily' || selectedFrequency === 'Monthly'">
+      <input type="file" #fileInput (change)="onFileSelected(fileInput)">
+    </label>
+    <button *ngIf="selectedFrequency === 'Monthly'" class="btn btn-primary buttons"
+      (click)="uploadFileJndMonthly()">Upload</button>
+    <button *ngIf="selectedFrequency === 'Daily'" class="btn btn-primary buttons"
+      (click)="uploadFileJndDaily()">Upload</button>
+    <button class="btn btn-success buttons" *ngIf="showDownloadButton" (click)="downloadFile()">Download</button>
+    <hr>
+  </div>
+  <div>
+    <hr *ngIf="selectedFrequency_city === 'Junagadh'">
+  </div>
+</div>
+<!-- Time Excel of machine end -->
